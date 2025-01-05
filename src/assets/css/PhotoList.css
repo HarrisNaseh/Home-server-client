@@ -1,0 +1,12 @@
+.item-list{
+    display:flex;
+    flex-direction: row;
+    gap: 0.25em;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+.items-container{
+    max-width: 90%;
+}

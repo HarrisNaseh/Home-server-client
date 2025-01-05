@@ -1,0 +1,13 @@
+.image-box{
+    display: inline-block;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.media-thumbnail{
+
+    height: 11em;
+    /* max-width: 20em; */
+    
+}
