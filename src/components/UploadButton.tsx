@@ -64,8 +64,8 @@ function UploadButton() {
 
         if (toastId.current !== null){
 
-          const {Files_Uploaded} = response.data;
-          const {Error_Strings} = response.data;
+          const {Files_Uploaded} = await response.data;
+          const {Error_Strings} = await response.data;
           let files_string;
 
           if (Files_Uploaded === 0){
@@ -78,15 +78,15 @@ function UploadButton() {
             files_string = `${Files_Uploaded} Files Uploaded`
           }
 
-          toast(files_string, {
-            hideProgressBar: false,
-            draggable: false,
-            position: "bottom-left",
-            pauseOnHover: false,
-            theme: "dark",
-            autoClose: 5000,
-            type: "success" 
-        });
+        //   toast(files_string, {
+        //     hideProgressBar: false,
+        //     draggable: false,
+        //     position: "bottom-left",
+        //     pauseOnHover: false,
+        //     theme: "dark",
+        //     autoClose: 5000,
+        //     type: "success" 
+        // });
 
             toast.update(toastId.current, {
             render: files_string,
