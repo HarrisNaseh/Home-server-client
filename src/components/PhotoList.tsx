@@ -12,11 +12,10 @@ function PhotoList(props: ListProps) {
   const targetRowHeight = 150; // Desired height for rows
   const boxSpacing = 4; // Spacing between photos
 
-  // Prepare the layout configuration
-  const imageData = props.items.map((item) => ({
+  const imageData = props.items !== null ? props.items.map((item) => ({
     width: item.width,
     height: item.height,
-  }));
+  })): [];
 
   // Generate layout
   const layout = justifiedLayout(imageData, {
@@ -46,7 +45,9 @@ function PhotoList(props: ListProps) {
                 <ListItem
                   id={item.id}
                   height={box.height} // Adjusted by layout
-                  width={box.width} // Adjusted by layout
+                  width={box.width}
+                  type = {item.type} // Adjusted by layout
+                  duration = {item.duration}
                 />
               </li>
             );

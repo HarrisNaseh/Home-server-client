@@ -5,9 +5,14 @@
     height: fit-content;
 }
 
-.media-thumbnail{
 
-    height: 11em;
-    /* max-width: 20em; */
-    
+.video-duration{
+    position:absolute;
+    top: 5px;
+    right: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    padding: 2px 5px;
+    font-weight: bold;
 }
