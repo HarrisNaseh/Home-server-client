@@ -4,13 +4,20 @@ import addLogo from '../assets/images/plus.svg'
 
 import {toast} from 'react-toastify'
 
+import { FilesStore } from "../context/UploadContext"
+import { useContext } from "react";
+
 function UploadButton() {
+
+  const {setUploadedFiles} = useContext(FilesStore);
 
     const[uploadProcess, setUploadProcess] = useState<number>(0);
 
     const mediaUploadRef = useRef<HTMLInputElement>(null)
 
     const toastId = useRef<string | number | null>(null);
+
+    const baseApiUrl = import.meta.env.VITE_API_BASE_URL;
 
     async function handleMediaChange() {
       const length = mediaUploadRef?.current?.files?.length
@@ -34,7 +41,7 @@ function UploadButton() {
         }
       }
       
-      const baseApiUrl = import.meta.env.VITE_API_BASE_URL;
+
       try{
         const response = await axios.post(`${baseApiUrl}/upload`, formData, {
           headers: {"Content-Type": "multipart/form-data",},
@@ -66,6 +73,7 @@ function UploadButton() {
 
           const {Files_Uploaded} = await response.data;
           const {Error_Strings} = await response.data;
+          setUploadedFiles(formData);
           let files_string;
 
           if (Files_Uploaded === 0){
@@ -77,16 +85,6 @@ function UploadButton() {
           else{
             files_string = `${Files_Uploaded} Files Uploaded`
           }
-
-        //   toast(files_string, {
-        //     hideProgressBar: false,
-        //     draggable: false,
-        //     position: "bottom-left",
-        //     pauseOnHover: false,
-        //     theme: "dark",
-        //     autoClose: 5000,
-        //     type: "success" 
-        // });
 
             toast.update(toastId.current, {
             render: files_string,
